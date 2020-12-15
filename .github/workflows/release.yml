@@ -19,16 +19,20 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout from workflow dispatch
+      - name: Checkout
         uses: actions/checkout@v2
         if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
-          ref: ${{ github.event.inputs.ref }}
-      - name: Checkout from repository dispatch
-        uses: actions/checkout@v2
-        if: ${{ github.event_name == 'repository_dispatch' }}
+          ref: ${{ github.event.client_payload.ref }}${{ github.event.inputs.ref }}
+      - name: Start deployment
+        uses: bobheadxi/deployments@v0.4.3
+        id: deployment
         with:
-          ref: ${{ github.event.client_payload.ref }}
+          step: start
+          env: ${{ github.event.inputs.environment }}${{ github.event.client_payload.environment }}
+          desc: ${{ github.event.client_payload.ref }}${{ github.event.client_payload.ref }}
+          ref: ${{ github.event.client_payload.ref }}${{ github.event.inputs.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -70,3 +74,12 @@ jobs:
         if: ${{ github.event.inputs.environment == 'staging' || github.event.client_payload.environment == 'staging' }}
         env:
           SERVERLESS_STAGE: stg
+      - name: Finish deployment
+        uses: bobheadxi/deployments@v0.4.3
+        if: always()
+        id: deployment
+        with:
+          step: finish
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          token: ${{ secrets.GITHUB_TOKEN }}
