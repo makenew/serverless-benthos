@@ -1,0 +1,78 @@
+{
+  "name": "@makenew/serverless-benthos",
+  "version": "0.0.0",
+  "description": "Package skeleton for a Benthos Serverless project on AWS Lambda.",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "module": "index.js",
+  "sideEffects": false,
+  "keywords": [
+    "benthos"
+  ],
+  "homepage": "https://github.com/makenew/serverless-benthos",
+  "bugs": "https://github.com/makenew/serverless-benthos/issues",
+  "repository": "makenew/serverless-benthos",
+  "license": "MIT",
+  "author": {
+    "name": "Evan Sosenko",
+    "email": "razorx@evansosenko.com"
+  },
+  "files": [
+    "yarn.lock",
+    "config",
+    "index.js"
+  ],
+  "scripts": {
+    "postinstall": "npm-run-all benthos:install",
+    "test": "benthos test config",
+    "lint": "npm-run-all lint:*",
+    "lint:prettier": "prettier --check --ignore-path .gitignore '**/*.(js|json|yaml|yml)'",
+    "lint:js": "standard",
+    "clean": "del dist",
+    "build": "node build.js",
+    "prebuild": "npm-run-all clean",
+    "preversion": "npm-run-all --parallel lint test build sls:package",
+    "postversion": "git push --follow-tags",
+    "sls:package": "serverless package",
+    "sls:offline": "serverless offline",
+    "sls:invoke": "serverless invoke local -f",
+    "deploy": "npm-run-all --serial deploy:domain deploy:stack",
+    "deploy:domain": "serverless create_domain",
+    "deploy:stack": "serverless deploy --aws-s3-accelerate",
+    "benthos:install": "cd tmp && curl -fsSLO $(jq -r .benthos.src < ../package.json)/v$(jq -r .benthos.version < ../package.json)/$(jq -r .benthos.name < ../package.json)_$(jq -r .benthos.version < ../package.json)_$(jq -r .benthos.platform < ../package.json).zip",
+    "prebenthos:install": "mkdirp tmp",
+    "postbenthos:install": "npm-run-all benthos:verify",
+    "benthos:verify": "cd tmp && curl -fsSLO $(jq -r .benthos.src < ../package.json)/v$(jq -r .benthos.version < ../package.json)/benthos_$(jq -r .benthos.version < ../package.json)_checksums.txt",
+    "prebenthos:verify": "mkdirp tmp",
+    "postbenthos:verify": "cd tmp && sha256sum --strict --ignore-missing --check benthos_$(jq -r .benthos.version < ../package.json)_checksums.txt",
+    "release:staging": "curl --fail -H \"Authorization: token $GITHUB_TOKEN\" -H 'Accept: application/vnd.github.v3+json' -d '{\"event_type\":\"release\",\"client_payload\":{\"environment\":\"staging\",\"ref\":\"v'$(jq -r .version < package.json)'\"}}' -X POST \"https://api.github.com/repos/$(jq -r .repository < package.json)/dispatches\"",
+    "release:production": "curl --fail -H \"Authorization: token $GITHUB_TOKEN\" -H 'Accept: application/vnd.github.v3+json' -d '{\"event_type\":\"release\",\"client_payload\":{\"environment\":\"production\",\"ref\":\"v'$(jq -r .version < package.json)'\"}}' -X POST \"https://api.github.com/repos/$(jq -r .repository < package.json)/dispatches\"",
+    "format": "npm-run-all --serial format:prettier format:js",
+    "format:prettier": "prettier --write --ignore-path .gitignore '**/*.(js|json|yaml|yml)'",
+    "format:js": "standard --fix"
+  },
+  "benthos": {
+    "name": "benthos-lambda",
+    "version": "3.35.0",
+    "platform": "linux_amd64",
+    "src": "https://github.com/jeffail/benthos/releases/download",
+    "artifacts": [
+      "todo"
+    ]
+  },
+  "engines": {
+    "node": ">=14.15.0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "del-cli": "^3.0.0",
+    "mkdirp": "^1.0.4",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^2.0.2",
+    "serverless": "^2.0.0",
+    "serverless-domain-manager": "^5.0.0",
+    "serverless-offline": "^6.1.2",
+    "standard": "^16.0.3"
+  }
+}

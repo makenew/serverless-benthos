@@ -1,0 +1,21 @@
+---
+name: promote
+
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  staging:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+      - name: Release staging
+        run: yarn run release:staging
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
