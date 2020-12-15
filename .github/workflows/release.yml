@@ -21,7 +21,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        if: ${{ github.event_name == 'workflow_dispatch' }}
         with:
           ref: ${{ github.event.client_payload.ref }}${{ github.event.inputs.ref }}
       - name: Start deployment
