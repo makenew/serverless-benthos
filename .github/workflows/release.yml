@@ -77,7 +77,6 @@ jobs:
       - name: Finish deployment
         uses: bobheadxi/deployments@v0.4.3
         if: always()
-        id: deployment
         with:
           step: finish
           status: ${{ job.status }}
