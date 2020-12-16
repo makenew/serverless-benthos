@@ -62,7 +62,7 @@ makenew () {
   sed_delete README.md '9,105d'
   sed_insert README.md '9i' 'TODO'
 
-  find_replace "s/\"version\": \".*\"/\"version\": \"0.0.0\"/g"
+  find_replace "s/^  \"version\": \".*\"/  \"version\": \"0.0.0\"/g"
   find_replace "s/0\.0\.0\.\.\./0.0.1.../g"
   find_replace "s/Serverless Benthos Project Skeleton/${mk_title}/g"
   find_replace "s/Package skeleton for a Benthos Serverless project on AWS Lambda\./${mk_description}/g"
