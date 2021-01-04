@@ -213,9 +213,10 @@ The following repository secrets must be set on [GitHub Actions]:
 
 These must be set manually.
 
-### Secrets for GitHub Action to Cut Version (Optional)
+### Secrets for Optional GitHub Actions
 
-The version GitHub action requires a user with write access to the repository
+The version and format GitHub actions
+require a user with write access to the repository,
 including access to trigger workflows.
 Set these additional secrets to enable the action:
 
