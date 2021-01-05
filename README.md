@@ -221,11 +221,11 @@ including access to trigger workflows.
 Set these additional secrets to enable the action:
 
 - `GH_TOKEN`: A personal access token for the user.
-- `GH_USER`: The Github user's username.
-- `GIT_USER_NAME`: The Github user's real name.
-- `GIT_USER_EMAIL`: The Github user's email.
-- `GPG_PASSPHRASE`: The Github user's GPG passphrase.
-- `GPG_PRIVATE_KEY`: The Github user's [GPG private key].
+- `GH_USER`: The GitHub user's username.
+- `GIT_USER_NAME`: The GitHub user's real name.
+- `GIT_USER_EMAIL`: The GitHub user's email.
+- `GPG_PASSPHRASE`: The GitHub user's GPG passphrase.
+- `GPG_PRIVATE_KEY`: The GitHub user's [GPG private key].
 
 [GitHub Actions]: https://github.com/features/actions
 [GPG private key]: https://github.com/marketplace/actions/import-gpg#prerequisites
