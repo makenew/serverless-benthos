@@ -5,6 +5,7 @@ on:
   push:
     tags:
       - v*
+
 jobs:
   staging:
     runs-on: ubuntu-20.04
