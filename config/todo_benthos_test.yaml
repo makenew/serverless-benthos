@@ -1,5 +1,4 @@
 ---
-parallel: true
 tests:
   - name: todo
     target_processors: '/pipeline/processors'
