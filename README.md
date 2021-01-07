@@ -220,12 +220,12 @@ require a user with write access to the repository,
 including access to trigger workflows.
 Set these additional secrets to enable the action:
 
-- `GH_TOKEN`: A personal access token for the user.
 - `GH_USER`: The GitHub user's username.
+- `GH_TOKEN`: A personal access token for the user.
 - `GIT_USER_NAME`: The GitHub user's real name.
 - `GIT_USER_EMAIL`: The GitHub user's email.
-- `GPG_PASSPHRASE`: The GitHub user's GPG passphrase.
 - `GPG_PRIVATE_KEY`: The GitHub user's [GPG private key].
+- `GPG_PASSPHRASE`: The GitHub user's GPG passphrase.
 
 [GitHub Actions]: https://github.com/features/actions
 [GPG private key]: https://github.com/marketplace/actions/import-gpg#prerequisites
