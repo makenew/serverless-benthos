@@ -1,6 +1,6 @@
 # Serverless Benthos Project Skeleton
 
-![main](https://github.com/makenew/serverless-benthos/workflows/main/badge.svg)
+[![GitHub Actions](https://github.com/makenew/serverless-benthos/workflows/main/badge.svg)](https://github.com/makenew/serverless-benthos/actions)
 
 Package skeleton for a Benthos Serverless project on AWS Lambda.
 
