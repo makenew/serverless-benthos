@@ -79,5 +79,5 @@ jobs:
           mkdir -p bin
           mv benthos bin
           echo "$(pwd)/bin" >> $GITHUB_PATH
-      - name: Cut version
+      - name: Cut ${{ github.event.inputs.version }}${{ github.event.client_payload.version }} version
         run: npm version ${{ github.event.inputs.version }}${{ github.event.client_payload.version }}
