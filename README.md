@@ -52,7 +52,7 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
    This will replace the boilerplate, delete itself,
    remove the git remote, remove upstream tags,
    and stage changes for commit.
-4. Create the required GitHub repository secrets
+4. Create the required GitHub repository secrets.
 5. Review, commit, and push the changes to GitHub with
    ```
    $ git diff --cached
