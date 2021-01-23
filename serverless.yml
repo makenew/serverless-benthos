@@ -15,6 +15,7 @@ provider:
   logRetentionInDays: 30
   apiGateway:
     shouldStartNameWithService: true
+  lambdaHashingVersion: 20201221
   environment:
     LOG_LEVEL: ${env:LOG_LEVEL, 'info'}
     LOG_VERSION: ${file(./package.json):version}
