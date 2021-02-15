@@ -42,34 +42,17 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: Get yarn cache directory
-        id: yarn-cache-dir
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Yarn cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: Node modules cache
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}
       - name: Install dependencies
-        run: yarn install --frozen-lockfile --non-interactive
+        run: npm ci
       - name: Build
-        run: yarn run build
+        run: npm run build
       - name: Serverless deploy to production from ${{ github.event.client_payload.ref }}${{ github.event.inputs.ref }}
-        run: yarn run deploy
+        run: npm run deploy
         if: ${{ github.event.inputs.environment == 'production' || github.event.client_payload.environment == 'production' }}
         env:
           SERVERLESS_STAGE: prod
       - name: Serverless deploy to staging from ${{ github.event.client_payload.ref }}${{ github.event.inputs.ref }}
-        run: yarn run deploy
+        run: npm run deploy
         if: ${{ github.event.inputs.environment == 'staging' || github.event.client_payload.environment == 'staging' }}
         env:
           SERVERLESS_STAGE: stg
