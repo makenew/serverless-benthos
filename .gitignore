@@ -22,8 +22,8 @@ package
 # Temporary development files
 tmp
 
-# npm lockfile (only yarn.lock supported)
-package-lock.json
+# Yarn lockfile (only npm supported)
+yarn.lock
 
 # Logs
 logs
