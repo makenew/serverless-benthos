@@ -5,7 +5,7 @@ import mkdirp from 'mkdirp'
 import jsYaml from 'js-yaml'
 import jszip from 'jszip'
 
-const { safeLoad: yamlSafeLoad, safeDump: yamlSafeDump } = jsYaml
+const { load: yamlLoad, dump: yamlDump } = jsYaml
 const { loadAsync: zipLoadAsync } = jszip
 
 const staticConfigName = 'config.yaml'
@@ -51,8 +51,8 @@ const createArtifactFrom = (srcZipBuffer, configRoot, distRoot) => async (
 
 const loadYamlToBuffer = async (name) => {
   const buf = await fs.promises.readFile(path.resolve(name))
-  const data = await yamlSafeLoad(buf)
-  return yamlSafeDump(data)
+  const data = await yamlLoad(buf)
+  return yamlDump(data)
 }
 
 const generateZipFrom = async (srcZipBuffer, files = []) => {

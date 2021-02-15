@@ -13,7 +13,6 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
 - Deploy [Benthos] to [AWS Lambda] under a
   [custom domain][serverless-domain-manager] with [Serverless].
 - [Node.js]'s [npm] package structure.
-- Fast, reliable, and secure dependency management with [Yarn].
 - Linting with the [JavaScript Standard Style].
 - [Prettier] code.
 - Continuous testing and deployment with [GitHub Actions].
@@ -29,7 +28,6 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
 [Node.js]: https://nodejs.org/
 [Prettier]: https://prettier.io/
 [Serverless]: https://serverless.com/
-[Yarn]: https://yarnpkg.com/
 [npm]: https://www.npmjs.com/
 [serverless-domain-manager]: https://github.com/amplify-education/serverless-domain-manager
 
@@ -64,7 +62,7 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
    then publish the initial version of the package with
    ```
    $ nvm install
-   $ yarn install
+   $ npm install
    $ npm version patch
    ```
 7. Ensure a valid certificate exists in [AWS Certificate Manager]
@@ -73,7 +71,7 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
    `*.serverless-benthos.makenew.razorx.app`.
    Then trigger a deploy to the stg stage with
    ```
-   $ yarn run release:staging
+   $ npm run release:staging
    ```
 
 [AWS Certificate Manager]: https://aws.amazon.com/certificate-manager/
@@ -112,16 +110,16 @@ and summarized under [Releases].
 $ git clone https://github.com/makenew/serverless-benthos.git
 $ cd serverless-benthos
 $ nvm install
-$ yarn install
-$ yarn test
+$ npm install
+$ npm test
 ```
 
 Primary development tasks are defined under `scripts` in `package.json`
-and available via `yarn run`.
+and available via `npm run`.
 View them with
 
 ```
-$ yarn run
+$ npm run
 ```
 
 ### Source code
@@ -137,7 +135,7 @@ $ git clone git@github.com:makenew/serverless-benthos.git
 
 ### Requirements
 
-You will need [Node.js] with [npm], and [Yarn].
+You will need [Node.js] with [npm].
 Optionally, to run tests you will need [Benthos],
 and to use [Serverless Offline] you will need [Docker].
 
@@ -157,7 +155,7 @@ $ nvm use
 Install the development dependencies with
 
 ```
-$ yarn install
+$ npm install
 ```
 [Docker]: https://www.docker.com/
 [Node.js]: https://nodejs.org/
@@ -187,11 +185,11 @@ To add a new Serverless function nameed, e.g., `foo`:
 Serverless deployment is triggered by a release repository_dispatch on GitHub Actions.
 
 Ensure a `GITHUB_TOKEN` is set in your environment and
-use `yarn run release:<environment>` to do this automatically, e.g.,
+use `npm run release:<environment>` to do this automatically, e.g.,
 
 ```
-$ yarn run release:staging
-$ yarn run release:production
+$ npm run release:staging
+$ npm run release:production
 ```
 
 Deployment may be triggered using on the web
