@@ -68,7 +68,7 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-  serverless:
+  package:
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout
