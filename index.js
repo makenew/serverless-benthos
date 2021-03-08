@@ -15,7 +15,7 @@ export const createArtifactsFrom = ({
   configRoot,
   distRoot
 }) => async ({ name, version, platform, artifacts = [] }) => {
-  if (!tmpRoot) throw new Error('Missing srcArtifactPath')
+  if (!tmpRoot) throw new Error('Missing tmpRoot')
   if (!configRoot) throw new Error('Missing configRoot')
   if (!distRoot) throw new Error('Missing distRoot')
 
