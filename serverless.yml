@@ -4,6 +4,7 @@ service: serverless-benthos
 frameworkVersion: '^2.0.0'
 
 variablesResolutionMode: 20210219
+configValidationMode: error
 
 plugins:
   - serverless-domain-manager
