@@ -108,6 +108,7 @@ web_modules/
 
 # Next.js build output
 .next
+out
 
 # Nuxt.js build / generate output
 .nuxt
@@ -138,8 +139,8 @@ dist
 .vscode-test
 
 # yarn v2
-
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
+.yarn/install-state.gz
 .pnp.*
