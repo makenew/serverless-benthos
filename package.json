@@ -49,7 +49,7 @@
   },
   "benthos": {
     "name": "benthos-lambda",
-    "version": "3.42.1",
+    "version": "3.43.0",
     "platform": "linux_amd64",
     "src": "https://github.com/jeffail/benthos/releases/download",
     "artifacts": [
