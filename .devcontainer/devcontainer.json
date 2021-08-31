@@ -1,0 +1,19 @@
+{
+  "name": "Serverless Benthos",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "BENTHOS_VERSION": "3.53.0",
+      "BENTHOS_SRC": "https://github.com/jeffail/benthos/releases/download",
+      "NODE_MAJOR_VERSION": "14"
+    }
+  },
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode"
+  ],
+  "postCreateCommand": "npm install",
+  "forwardPorts": [3000, 3002],
+  "remoteUser": "node"
+}
