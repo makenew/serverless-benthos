@@ -58,12 +58,14 @@ jobs:
         run: |
           benthos_version="$(jq -r .benthos.version < package.json)"
           benthos_src="$(jq -r .benthos.src < package.json)/v${benthos_version}"
-          curl -fsSL --create-dirs -o \
-            tmp/benthos.tar.gz "${benthos_src}/benthos_${benthos_version}_linux_amd64.tar.gz"
+          benthos_archive="benthos_${benthos_version}_linux_amd64.tar.gz"
+          curl -fsSL --create-dirs -o "tmp/${benthos_archive}" \
+            "${benthos_src}/${benthos_archive}"
           curl -fsSL -o tmp/benthos_checksums.txt \
             "${benthos_src}/benthos_${benthos_version}_checksums.txt"
           cd tmp
           sha256sum --strict --ignore-missing --check benthos_checksums.txt
+          mv "${benthos_archive}" benthos.tar.gz
       - name: Install Benthos to PATH
         run: |
           cd tmp
