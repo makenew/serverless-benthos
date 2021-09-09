@@ -13,7 +13,6 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
 - Deploy [Benthos] to [AWS Lambda] under a
   [custom domain][serverless-domain-manager] with [Serverless].
 - [Node.js]'s [npm] package structure.
-- Linting with the [JavaScript Standard Style].
 - [Prettier] code.
 - Continuous testing and deployment with [GitHub Actions].
 - [Keep a CHANGELOG].
@@ -23,7 +22,6 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
 [AWS Lambda]: https://aws.amazon.com/lambda/
 [EditorConfig]: https://editorconfig.org/
 [GitHub Actions]: https://github.com/features/actions
-[JavaScript Standard Style]: https://standardjs.com/
 [Keep a CHANGELOG]: https://keepachangelog.com/
 [Node.js]: https://nodejs.org/
 [Prettier]: https://prettier.io/
