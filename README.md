@@ -12,6 +12,7 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
 
 - Deploy [Benthos] to [AWS Lambda] under a
   [custom domain][serverless-domain-manager] with [Serverless].
+- Unlimited, modular, and testable configs packaged with [Blobpack].
 - [Node.js]'s [npm] package structure.
 - [Prettier] code.
 - Continuous testing and deployment with [GitHub Actions].
@@ -19,6 +20,7 @@ Bootstrap a new Benthos Serverless project in five minutes or less.
 - Consistent coding with [EditorConfig].
 
 [Benthos]: https://www.benthos.dev/
+[Blobpack]: https://github.com/razor-x/blobpack
 [AWS Lambda]: https://aws.amazon.com/lambda/
 [EditorConfig]: https://editorconfig.org/
 [GitHub Actions]: https://github.com/features/actions
