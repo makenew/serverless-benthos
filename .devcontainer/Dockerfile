@@ -1,8 +1,8 @@
-ARG NODE_MAJOR_VERSION="14"
+ARG VARIANT="14"
 
-FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-${NODE_MAJOR_VERSION}
+FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:${VARIANT}
 
-ARG BENTHOS_VERSION
+ARG BENTHOS_VERSION="3.55.0"
 ARG BENTHOS_SRC="https://github.com/jeffail/benthos/releases/download"
 
 RUN mkdir -p tmp/benthos \
@@ -19,3 +19,11 @@ RUN mkdir -p tmp/benthos \
  && mkdir -p bin \
  && mv benthos /usr/local/bin \
  && rm -rf tmp/benthos
+
+USER node
+WORKDIR /home/node
+
+RUN mkdir -p .config/git \
+ && echo ".vscode/*" >> .config/git/ignore \
+ && echo "*.code-workspace" >> .config/git/ignore \
+ && echo ".history/" >> .config/git/ignore
