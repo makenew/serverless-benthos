@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: Get tag
-        uses: jungwinter/split@v2
+        uses: jungwinter/split@v1
         id: tag
         with:
           msg: ${{ github.ref }}
-          separator: /
+          seperator: /
       - name: Promote ${{ steps.tag.outputs._2 }} to staging
         uses: peter-evans/repository-dispatch@v1
         with:
