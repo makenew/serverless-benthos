@@ -56,8 +56,8 @@ jobs:
         run: npm ci
       - name: Download Benthos
         run: |
-          benthos_version="$(jq -r .benthos.version < package.json)"
-          benthos_src="$(jq -r .benthos.src < package.json)/v${benthos_version}"
+          benthos_version="$(jq -r .blobpack.version < package.json)"
+          benthos_src="$(jq -r .blobpack.src < package.json)/v${benthos_version}"
           benthos_archive="benthos_${benthos_version}_linux_amd64.tar.gz"
           curl -fsSL --create-dirs -o "tmp/${benthos_archive}" \
             "${benthos_src}/${benthos_archive}"
