@@ -42,9 +42,9 @@
     "format": "prettier --write --ignore-path .gitignore '**/*.(js|json|yaml|yml)'"
   },
   "blobpack": {
-    "name": "benthos-lambda",
-    "version": "3.57.0",
-    "platform": "linux_amd64",
+    "name": "benthos-lambda-al2",
+    "version": "3.59.0",
+    "platform": "linux_arm64",
     "src": "https://github.com/jeffail/benthos/releases/download",
     "artifacts": [
       "todo"
