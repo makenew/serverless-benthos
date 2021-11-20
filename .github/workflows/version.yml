@@ -41,38 +41,7 @@ jobs:
           git_committer_email: ${{ secrets.GIT_USER_EMAIL }}
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Cache npm packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-            ${{ runner.os }}-
-      - name: Install dependencies
-        run: npm ci
-      - name: Download Benthos
-        run: |
-          benthos_version="$(jq -r .blobpack.version < package.json)"
-          benthos_src="$(jq -r .blobpack.src < package.json)/v${benthos_version}"
-          benthos_archive="benthos_${benthos_version}_linux_amd64.tar.gz"
-          curl -fsSL --create-dirs -o "tmp/${benthos_archive}" \
-            "${benthos_src}/${benthos_archive}"
-          curl -fsSL -o tmp/benthos_checksums.txt \
-            "${benthos_src}/benthos_${benthos_version}_checksums.txt"
-          cd tmp
-          sha256sum --strict --ignore-missing --check benthos_checksums.txt
-          mv "${benthos_archive}" benthos.tar.gz
-      - name: Install Benthos to PATH
-        run: |
-          cd tmp
-          tar -xzf benthos.tar.gz
-          mkdir -p bin
-          mv benthos bin
-          echo "$(pwd)/bin" >> $GITHUB_PATH
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Cut ${{ github.event.inputs.version }}${{ github.event.client_payload.version }} version
         run: npm version ${{ github.event.inputs.version }}${{ github.event.client_payload.version }}

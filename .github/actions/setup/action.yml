@@ -1,0 +1,42 @@
+---
+name: Setup
+description: Setup Benthos, Node.js, and install dependencies.
+
+inputs:
+  node_version:
+    description: The Node.js version
+    required: false
+    default: '16'
+
+runs:
+  using: composite
+  steps:
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        cache: npm
+        node-version: ${{ inputs.node_version }}
+    - name: Install dependencies
+      shell: bash
+      run: npm ci
+    - name: Download Benthos
+      shell: bash
+      run: |
+        benthos_version="$(jq -r .blobpack.version < package.json)"
+        benthos_src="$(jq -r .blobpack.src < package.json)/v${benthos_version}"
+        benthos_archive="benthos_${benthos_version}_linux_amd64.tar.gz"
+        curl -fsSL --create-dirs -o "tmp/${benthos_archive}" \
+          "${benthos_src}/${benthos_archive}"
+        curl -fsSL -o tmp/benthos_checksums.txt \
+          "${benthos_src}/benthos_${benthos_version}_checksums.txt"
+        cd tmp
+        sha256sum --strict --ignore-missing --check benthos_checksums.txt
+        mv "${benthos_archive}" benthos.tar.gz
+    - name: Install Benthos
+      shell: bash
+      run: |
+        cd tmp
+        tar -xzf benthos.tar.gz
+        mkdir -p bin
+        mv benthos bin
+        echo "$(pwd)/bin" >> $GITHUB_PATH
