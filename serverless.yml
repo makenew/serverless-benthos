@@ -1,9 +1,9 @@
 ---
 service: serverless-benthos
 
-frameworkVersion: '^2.61.0'
+frameworkVersion: '^2.66.2'
 
-variablesResolutionMode: 20210219
+variablesResolutionMode: 20210326
 configValidationMode: error
 
 plugins:
