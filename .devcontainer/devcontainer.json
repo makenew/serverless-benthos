@@ -9,6 +9,7 @@
     }
   },
   "extensions": [
+    "ms-vsliveshare.vsliveshare",
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
     "esbenp.prettier-vscode"
