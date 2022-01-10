@@ -152,6 +152,7 @@ Install the development dependencies with
 ```
 $ npm install
 ```
+
 [Node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
 [nvm]: https://github.com/creationix/nvm
