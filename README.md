@@ -132,8 +132,7 @@ $ git clone git@github.com:makenew/serverless-benthos.git
 ### Requirements
 
 You will need [Node.js] with [npm].
-Optionally, to run tests you will need [Benthos],
-and to use [Serverless Offline] you will need [Docker].
+Optionally, to run tests you will need [Benthos].
 
 Be sure that all commands run under the correct Node version, e.g.,
 if using [nvm], install the correct version with
@@ -153,11 +152,9 @@ Install the development dependencies with
 ```
 $ npm install
 ```
-[Docker]: https://www.docker.com/
 [Node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/
 [nvm]: https://github.com/creationix/nvm
-[Serverless Offline]: https://www.serverless.com/plugins/serverless-offline
 
 ### Benthos Configuration and Testing
 
