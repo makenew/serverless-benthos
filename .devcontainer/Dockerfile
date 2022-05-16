@@ -2,8 +2,8 @@ ARG VARIANT="16"
 
 FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:${VARIANT}
 
-ARG BENTHOS_VERSION="3.65.0"
-ARG BENTHOS_SRC="https://github.com/jeffail/benthos/releases/download"
+ARG BENTHOS_VERSION="4.1.0"
+ARG BENTHOS_SRC="https://github.com/benthosdev/benthos/releases/download"
 
 RUN mkdir -p tmp/benthos \
  && benthos_url="${BENTHOS_SRC}/v${BENTHOS_VERSION}" \

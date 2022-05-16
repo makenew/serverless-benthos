@@ -42,9 +42,9 @@
   },
   "blobpack": {
     "name": "benthos-lambda-al2",
-    "version": "3.65.0",
+    "version": "4.1.0",
     "platform": "linux_arm64",
-    "src": "https://github.com/jeffail/benthos/releases/download",
+    "src": "https://github.com/benthosdev/benthos/releases/download",
     "artifacts": [
       "todo"
     ]
