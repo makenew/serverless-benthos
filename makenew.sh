@@ -57,7 +57,6 @@ makenew () {
   read -p '> GitHub user or organization name (my-user): ' mk_user
   read -p '> GitHub repository name (my-repo): ' mk_repo
   read -p '> Serverless stack name (my-stack): ' mk_stack
-  read -p '> Domain name (example.com): ' mk_domain
 
   sed_delete README.md '9,99d'
   sed_insert README.md '9i' 'TODO'
@@ -71,7 +70,6 @@ makenew () {
   find_replace "s|serverless-benthos|___serverless-benthos|g"
   find_replace "s|@makenew/___serverless-benthos|${mk_slug}|g"
   find_replace "s|makenew/___serverless-benthos|${mk_user}/${mk_repo}|g"
-  find_replace "s|makenew\.razorx\.app|${mk_domain}|g"
   find_replace "s|___serverless-benthos|${mk_stack}|g"
 
   echo
