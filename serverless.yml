@@ -32,6 +32,7 @@ functions:
     handler: benthos-lambda
     package:
       artifact: dist/todo.zip
+    url: true
     events:
       - httpApi:
           method: get
