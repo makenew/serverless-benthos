@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "postinstall": "npm-run-all benthos:install",
-    "test": "benthos test config",
+    "test": "benthos test config/...",
     "lint": "prettier --check --ignore-path .gitignore '**/*.(js|cjs|mjs|json|yaml|yml)'",
     "clean": "del dist",
     "build": "blobpack",
@@ -34,17 +34,15 @@
     "postversion": "git push --follow-tags",
     "sls:package": "serverless package",
     "sls:invoke": "serverless invoke local -f",
-    "deploy": "npm-run-all --serial deploy:domain deploy:stack",
-    "deploy:domain": "serverless create_domain --stage=$SERVERLESS_STAGE",
-    "deploy:stack": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
+    "deploy": "serverless deploy --aws-s3-accelerate --stage=$SERVERLESS_STAGE",
     "benthos:install": "blobpack install",
     "format": "prettier --write --ignore-path .gitignore '**/*.(js|cjs|mjs|json|yaml|yml)'"
   },
   "blobpack": {
     "name": "benthos-lambda-al2",
-    "version": "3.65.0",
+    "version": "4.2.0",
     "platform": "linux_arm64",
-    "src": "https://github.com/jeffail/benthos/releases/download",
+    "src": "https://github.com/benthosdev/benthos/releases/download",
     "artifacts": [
       "todo"
     ]
@@ -58,7 +56,6 @@
     "del-cli": "^4.0.1",
     "npm-run-all": "^4.1.2",
     "prettier": "^2.3.2",
-    "serverless": "^3.17.0",
-    "serverless-domain-manager": "^6.0.0"
+    "serverless": "^3.19.0"
   }
 }
