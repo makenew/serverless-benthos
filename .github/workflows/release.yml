@@ -40,7 +40,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
       - name: Setup
-        uses: actions/setup-node@v2
+        uses: ./.github/actions/setup
       - name: Build
         run: npm run build
       - name: Serverless deploy to production from ${{ github.event.client_payload.ref }}${{ github.event.inputs.ref }}
