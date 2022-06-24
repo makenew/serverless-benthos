@@ -36,6 +36,6 @@ package:
 functions:
   todo:
     url: true
-    handler: benthos-lambda
+    handler: bootstrap
     package:
       artifact: dist/todo.zip
