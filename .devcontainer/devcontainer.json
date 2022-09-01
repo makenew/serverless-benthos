@@ -3,7 +3,7 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "BENTHOS_VERSION": "4.1.0",
+      "BENTHOS_VERSION": "4.6.0",
       "BENTHOS_SRC": "https://github.com/benthosdev/benthos/releases/download",
       "VARIANT": "16"
     }
