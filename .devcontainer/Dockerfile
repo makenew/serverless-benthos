@@ -13,7 +13,6 @@ RUN mkdir -p tmp/benthos \
  && curl -fsSL -o tmp/benthos/benthos_checksums.txt \
       "${benthos_url}/benthos_${BENTHOS_VERSION}_checksums.txt" \
  && cd tmp/benthos \
- && ls \
  && sha256sum --strict --ignore-missing --check benthos_checksums.txt \
  && tar -xzf "${benthos_archive}" \
  && mkdir -p bin \
