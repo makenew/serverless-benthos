@@ -15,7 +15,6 @@ RUN mkdir -p tmp/benthos \
  && cd tmp/benthos \
  && sha256sum --strict --ignore-missing --check benthos_checksums.txt \
  && tar -xzf "${benthos_archive}" \
- && mkdir -p bin \
  && mv benthos /usr/local/bin \
  && rm -rf tmp/benthos
 
