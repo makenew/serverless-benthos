@@ -1,6 +1,6 @@
 {
   "name": "@makenew/serverless-benthos",
-  "version": "4.2.2",
+  "version": "4.3.0",
   "description": "Package skeleton for a Benthos Serverless project on AWS Lambda.",
   "private": true,
   "type": "module",
